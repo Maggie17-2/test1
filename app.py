@@ -56,27 +56,7 @@ if uploaded_file is not None:
     province_counts_df['province'] = province_counts_df['province'].apply(lambda x: modify_province(x))
 
     # 显示修改后的DataFrame
-    print(province_counts_df)
-
-    # 2. 当province为浙江时，按city统计数量
-    zhejiang_city_counts = df_location[df_location['province'] == '浙江'].groupby('city').size()
-    zhejiang_city_counts_df = zhejiang_city_counts.reset_index(name='count')
-    zhejiang_city_counts_df['city'] = zhejiang_city_counts_df['city'] + '市'
-    # print(zhejiang_city_counts_df)
-
-    c1 = (
-        Map()
-        .add('', [list(z) for z in zip(zhejiang_city_counts_df['city'].values.tolist(),
-                                       zhejiang_city_counts_df['count'].values.tolist())], "浙江",
-             label_opts=opts.LabelOpts(is_show=True, formatter="{b}: {c}")
-             )
-        .set_global_opts(
-            title_opts=opts.TitleOpts(title="浙江省呼入归属地分析"),
-            visualmap_opts=opts.VisualMapOpts()
-        )
-        # .render("map_guangdong.html")
-    )
-    st.components.v1.html(c1.render_embed(), height=600)
+    # print(province_counts_df)
 
     c2 = (
         Map()
