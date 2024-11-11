@@ -93,4 +93,14 @@ if uploaded_file is not None:
     )
     st.components.v1.html(c2.render_embed(), height=600)
 
+    table8 = df_location
+    table8 = table8.rename(columns={
+        'province': '省会',
+        'call_number': '手机号',
+        'city': '城市',
+    })
+
+    with st.expander("查看详情"):
+        st.dataframe(table8, hide_index=True)
+
 
